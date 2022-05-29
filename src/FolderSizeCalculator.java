@@ -21,12 +21,12 @@ public class FolderSizeCalculator extends RecursiveTask<Long> {
 
         for (File file : files) {
             FolderSizeCalculator task = new FolderSizeCalculator(file);
-            task.fork(); // запустим асинхронно
+            task.fork();
             subTasks.add(task);
         }
 
         for (FolderSizeCalculator task : subTasks) {
-            sum += task.join(); // дождёмся выполнения задачи и прибавим результат
+            sum += task.join(); 
         }
 
         return sum;
